@@ -1,0 +1,78 @@
+<!--
+  Generated template for the InboxPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<!--Page heades-->
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title align="center" >Comments</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<!--page content-->
+<ion-content padding>
+  <!--comments section-->
+  <div class="inbox-comments">
+    <!--Search bar-->
+    <ion-searchbar *ngIf="inboxComments.length>1" (input)="getItems($event)" (ionClear)="getItems($event)"></ion-searchbar>
+   
+   <!--comments list with edit, replay and clear options-->
+    <div *ngFor="let item of filteredComments;">
+      <ion-card [ngClass]="( item.replyId == null) ? 'new-comment' : 'reply-comment'">
+        <ion-item class="comment-header">
+          <p item-start>{{ item.title }}</p>
+          <button item-end ion-button icon-left clear small (click)="editComment(item,0)">
+            <div>Edit</div>
+          </button>
+          <button item-end ion-button icon-left clear small (click)="editComment(item,1)">
+            <div>Reply</div>
+          </button>
+          <button item-end ion-button icon-left clear small (click)="deleteComment(item)">
+            <ion-icon ios="ios-close-circle-outline" md="ios-close-circle-outline"></ion-icon>
+          </button>
+        </ion-item>
+        <ion-card-content>
+          <p>{{ item.message }}</p>
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </div>
+  <!-- Reply content section -->
+  <div class="reply-content" *ngIf="isReply">
+    <button class="close-icon" item-end ion-button icon-left clear small (click)="refreshCommentSection()">
+      <ion-icon ios="ios-close-circle-outline" md="ios-close-circle-outline"></ion-icon>
+    </button>
+    <span>Replying {{edititingComment.title}} </span>
+    <br/>
+    <span>{{edititingComment.message}} </span>
+  </div>
+
+  <!--comment enter section-->
+  <div class="new-comment-section">
+    <ion-toolbar>
+      <p>
+        <ion-item>
+          <ion-label floating>Title</ion-label>
+          <ion-input #commentInput type="text" [(ngModel)]="newComment.title"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Messagae</ion-label>
+          <ion-input type="text" [(ngModel)]="newComment.message"></ion-input>
+        </ion-item>
+      </p>
+      <ion-buttons end>
+        <button ion-button class="send-btn" icon-right (click)="addNewComment()"[disabled]="!this.newComment.title || !this.newComment.message">
+          {{(isReply) ? 'Reply' : 'Send'}}
+          <ion-icon name="send"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-toolbar>
+  </div>
+</ion-content>

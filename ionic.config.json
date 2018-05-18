@@ -1,0 +1,8 @@
+{
+  "name": "UI3Assignment",
+  "app_id": "",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}

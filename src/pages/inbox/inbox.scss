@@ -1,0 +1,57 @@
+page-inbox {
+    .inbox-comments{
+        // float: right;
+        width: 100%;
+        overflow-y: scroll;
+        padding-bottom: 150px;
+        position: relative;
+        left:0;
+        top:0;
+        .comment-header{
+            background: transparent;
+        }
+        .new-comment{
+            background-color: yellow;
+            width: 100%;
+        }
+        .reply-comment{
+            background-color: wheat;
+            width: 80%;
+        }
+    }
+    .new-comment-section{
+        position: fixed;
+        width: 100%;
+        height: 170px;
+        bottom: 0;
+        left: 0;
+    right: 0;
+
+    }
+    .reply-content{
+        position: fixed;
+        width: 100%;
+        height: 60px;
+        bottom: 165px;
+        left: 0;
+        background: #000;
+        right: 0;
+        overflow-y: scroll;
+        color: #fff;
+        line-height: 22px;
+        padding: 5px 10px;
+        z-index: 3;
+        .close-icon{
+            position: absolute;
+            right: 0px;
+            color: #fff;
+        }
+    }
+    @media (min-width: 800px){
+       .inbox-comments,.new-comment-section{
+            max-width: 800px;
+        margin:0 auto;
+       }
+      }
+
+}

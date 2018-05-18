@@ -1,0 +1,58 @@
+// http://ionicframework.com/docs/theming/
+
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+@mixin appButton($bgColor,
+$txtColor,
+$borderColor,
+$activeBGColor) {
+  height: 46.04px;
+  background-color: $bgColor;
+  width: 100%;
+  box-shadow: none;
+  border: 1px solid $borderColor;
+  opacity: 1;
+  box-shadow: none;
+  transition: none;
+  color: $txtColor;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 14px;
+  text-align: center;
+  text-shadow: none;
+
+  &:hover:not(.disable-hover) {
+    background-color: $bgColor;
+  }
+
+  &:active,
+  &.activated {
+    background-color: $activeBGColor;
+    box-shadow: none;
+  }
+}   
+.send-btn {
+    @include appButton(#E2231A,
+    #FFFFFF,
+    #E2231A,
+      #BF382E);
+  
+    &[disabled] {
+      @include appButton(#B2B2B2,
+      #FFFFFF,
+      #B2B2B2,
+          #666666);
+    }
+  }
